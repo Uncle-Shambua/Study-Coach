@@ -104,7 +104,15 @@ async def question_the_question_socket(question_id: int, websocket: WebSocket, s
         print("User Disconnected")
 
 
-
+@topics_router.get("/url-questions/")
+async def user_url_questions(url: str):
+    response = await question_agent.run(
+        [
+            f"The url is: {url}"
+        ]
+    )
+    return response.output
+    
 
 
 
